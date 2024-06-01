@@ -66,7 +66,7 @@ function GameBoard() {
           `https://pokeapi.co/api/v2/pokemon/${imageAddressID.current}/`
         );
         const data = await res.json();
-        console.log(data.sprites);
+        // console.log(data.sprites);
         // setSrcImage(data.sprites.front_default);
         setSrcImage((s) => [
           ...s.slice(1),
@@ -75,23 +75,26 @@ function GameBoard() {
       }
       if (selectedImage.length > 5) {
         fetchPoke();
-        console.log('befor', imageAddressID.current);
+        // console.log('befor', imageAddressID.current);
         imageAddressID.current += 3;
-        console.log('img aft', imageAddressID.current);
+        // console.log('img aft', imageAddressID.current);
       }
     },
     [selectedImageLength]
   );
 
   function handleSelectedImage(id) {
-    // console.log(id);
-    setSelectedImage((s) => [...s, id]);
-    setSrcImage((img) =>
-      img.map((obj) => {
-        // console.log('onj', obj.id, obj.id != id, { ...obj, selected: true });
-        return obj.id != id ? obj : { ...obj, selected: true };
-      })
-    );
+    if (!selectedImage.includes(id)) {
+      setSelectedImage((s) => [...s, id]);
+      setSrcImage((img) =>
+        img.map((obj) => {
+          // console.log('onj', obj.id, obj.id != id, { ...obj, selected: true });
+          return obj.id != id ? obj : { ...obj, selected: true };
+        })
+      );
+    } else {
+      alert('Game over');
+    }
   }
 
   return (
