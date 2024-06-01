@@ -55,8 +55,11 @@ function ScoreBoard() {
 function GameBoard() {
   const [srcImage, setSrcImage] = useState(initialImage);
   const [selectedImage, setSelectedImage] = useState([]);
+  const [score, setScore] = useState(0);
+
   const imageAddressID = useRef(44);
   const selectedImageLength = selectedImage.length;
+
   // let needFetch
   useEffect(
     function () {
@@ -92,14 +95,19 @@ function GameBoard() {
           return obj.id != id ? obj : { ...obj, selected: true };
         })
       );
+      setScore((score) => score + 1);
     } else {
-      alert('Game over');
+      alert(`Game over!!! \n scored ${score}`);
+      setScore(0);
+      setSrcImage(initialImage);
+      setSelectedImage([]);
     }
   }
 
   return (
     <>
       <h4>This is gameBoard</h4>
+      <p>Score: {score}</p>
       {console.log(srcImage)}
       {shuffle(srcImage).map((img) => (
         <ImageComponent
