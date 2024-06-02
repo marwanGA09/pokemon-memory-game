@@ -24,7 +24,7 @@ export default function App() {
         </>
       ) : (
         <GameLevel onGameLevel={setGameLevel} />
-      )}{' '}
+      )}
       <Footer />
     </div>
   );
@@ -33,21 +33,18 @@ export default function App() {
 function GameLevel({ onGameLevel }) {
   return (
     <div className="main-page">
-      <div>
+      <h2>Memory Game!</h2>
+      <p className="description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe beatae
+        recusandae accusamus expedita fuga repellendus deserunt ad molestiae,
+        soluta odit dolorum commodi dignissimos nesciunt quo tempore vitae
+        ducimus, dolore corrupti.
+      </p>
+      <p>
         {' '}
-        <h2>Memory Game!</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe beatae
-          recusandae accusamus expedita fuga repellendus deserunt ad molestiae,
-          soluta odit dolorum commodi dignissimos nesciunt quo tempore vitae
-          ducimus, dolore corrupti.
-        </p>
-        <p>
-          <strong>Play now</strong>
-        </p>
-      </div>
+        <strong className="play-now">Play Now </strong>
+      </p>
       <div>
-        <label htmlFor="gameLevel">Game Level </label>
         <label htmlFor="easy">Easy</label>
         <input
           type="radio"
@@ -79,8 +76,8 @@ function GameLevel({ onGameLevel }) {
 
 function ScoreBoard({ score, highScore }) {
   return (
-    <div>
-      <h5>Memory Game</h5>
+    <div className="score-board">
+      <h3>Memory Game</h3>
       <p>Score: {score}</p>
       <p>High Score: {highScore}</p>
     </div>
@@ -235,7 +232,7 @@ function GameBoard({ gameLevel, onScore, onHighScore, score }) {
   }
 
   return (
-    <div className="images">
+    <div className="game-boards">
       {shuffle(srcImage).map((img) => (
         <ImageComponent
           key={img.id}
