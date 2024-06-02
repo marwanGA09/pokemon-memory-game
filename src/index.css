@@ -135,6 +135,8 @@ label:hover::before {
 .game-boards img {
   width: 20rem;
   cursor: pointer;
+  background-color: rgba(213, 220, 227, 0.184);
+  border-radius: 4rem;
 }
 
 .footer {
