@@ -2,18 +2,35 @@ import { useEffect, useRef, useState } from 'react';
 import shuffle from '../randomize';
 // MAX ID 1020
 
-function ResultDisplay({ score, onGameEnd, onHighScore, onScore }) {
+function ResultDisplay({
+  score,
+  highScore,
+  onGameEnd,
+  onHighScore,
+  onScore,
+  onGameLevel,
+}) {
   return (
     <div>
-      <p>Game over!!!</p> <p>scored {score}</p>
+      <p>Game over!!!</p> <p>scored {score}</p> <p>High score {highScore}</p>
       <button
         onClick={() => {
-          onHighScore();
           onScore(0);
+          // onHighScore();
           onGameEnd(false);
         }}
       >
         restart
+      </button>
+      <button
+        onClick={() => {
+          onScore(0);
+          // onHighScore();
+          onGameEnd(false);
+          onGameLevel(null);
+        }}
+      >
+        Back
       </button>
     </div>
   );
@@ -32,9 +49,11 @@ export default function App() {
       {gameEnd ? (
         <ResultDisplay
           score={score}
+          highScore={highScore}
           onGameEnd={setGameEnd}
           onScore={setScore}
           onHighScore={handleHighScore}
+          onGameLevel={setGameLevel}
         />
       ) : gameLevel ? (
         <>
@@ -44,6 +63,7 @@ export default function App() {
             score={score}
             onScore={setScore}
             onGameEnd={setGameEnd}
+            onHighScore={handleHighScore}
           />
         </>
       ) : (
@@ -182,7 +202,7 @@ let defaultImage = [
     selected: false,
   },
 ];
-function GameBoard({ gameLevel, score, onScore, onGameEnd }) {
+function GameBoard({ gameLevel, score, onScore, onGameEnd, onHighScore }) {
   console.log('game level', gameLevel);
   // console.log('before', initialImage);
   const initialImage =
@@ -224,7 +244,7 @@ function GameBoard({ gameLevel, score, onScore, onGameEnd }) {
         ]);
       }
       console.log(selectedImageLength);
-      if (selectedImageLength > gameLevel / 2) {
+      if (selectedImageLength > gameLevel - 1) {
         fetchPoke();
         // console.log('befor', imageAddressID.current);
         imageAddressID.current += 3;
@@ -245,7 +265,7 @@ function GameBoard({ gameLevel, score, onScore, onGameEnd }) {
       onScore((score) => score + 1);
     } else {
       // alert(`Game over!!! \n scored ${score}`);
-
+      onHighScore();
       setSrcImage(initialImage);
       setSelectedImage([]);
       onGameEnd(true);
@@ -253,7 +273,14 @@ function GameBoard({ gameLevel, score, onScore, onGameEnd }) {
   }
 
   return (
-    <div className="game-boards">
+    <div
+      className="game-boards"
+      // style={{
+      //   gridTemplateColumns: `repeat(${
+      //     gameLevel == 4 ? 1 : gameLevel == 8 ? 2 : 3
+      //   }, min-content)`,
+      // }}
+    >
       {shuffle(srcImage).map((img) => (
         <ImageComponent
           key={img.id}
@@ -269,7 +296,7 @@ function ImageComponent({ img, onSelectImage }) {
   // console.log(srcImg);
   return (
     <>
-      {img.selected ? <span> 👍 </span> : <span> 👎</span>}
+      {/* {img.selected ? <span> 👍 </span> : <span> 👎</span>} */}
       <img src={img.image} alt="" onClick={() => onSelectImage(img.id)} />
     </>
   );
