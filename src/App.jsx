@@ -2,10 +2,24 @@ import { useEffect, useRef, useState } from 'react';
 import shuffle from '../randomize';
 // MAX ID 1020
 
-function ResultDisplay({ score, highScore, onGameEnd, onScore, onGameLevel }) {
+function ResultDisplay({
+  score,
+  highScore,
+  onGameEnd,
+  onScore,
+  onGameLevel,
+  highScoreFlag,
+}) {
   return (
     <div className="result-display">
-      <p>Game over!!!</p> <p>scored {score}</p> <p>High score {highScore}</p>{' '}
+      <p>Game over 😢</p> <p> Scored {score} 👏 </p>
+      {highScoreFlag ? (
+        <p>
+          Congratulation 🎉🎊 <br /> You scored High
+        </p>
+      ) : (
+        <p> High score {highScore}</p>
+      )}{' '}
       <div>
         <button
           onClick={() => {
@@ -13,9 +27,10 @@ function ResultDisplay({ score, highScore, onGameEnd, onScore, onGameLevel }) {
             onGameEnd(false);
           }}
         >
-          restart
+          Restart
         </button>
         <button
+          className="back"
           onClick={() => {
             onScore(0);
             onGameEnd(false);
@@ -34,8 +49,12 @@ export default function App() {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [gameEnd, setGameEnd] = useState(false);
+  const [highScoreFlag, setHighScoreFlag] = useState(false);
   function handleHighScore() {
-    setHighScore((previous) => (score > previous ? score : previous));
+    setHighScore((previous) => {
+      setHighScoreFlag(score > previous);
+      return score > previous ? score : previous;
+    });
   }
   return (
     <div className="app">
@@ -47,6 +66,7 @@ export default function App() {
           onScore={setScore}
           onHighScore={handleHighScore}
           onGameLevel={setGameLevel}
+          highScoreFlag={highScoreFlag}
         />
       ) : gameLevel ? (
         <>

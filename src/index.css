@@ -169,8 +169,15 @@ input {
 }
 
 .result-display p {
-  font-size: 1.9rem;
+  font-size: 4rem;
   font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+.result-display p:first-child {
+  font-size: 6.5rem;
+  font-style: oblique;
+  color: rgba(237, 53, 53, 0.861);
 }
 
 .result-display div {
@@ -180,8 +187,16 @@ input {
 }
 
 button {
-  width: 7rem;
-  padding: 0.3rem 0.6rem;
+  /* width: 7rem; */
+  padding: 0.8rem 4rem;
+  font-size: 2rem;
   border: 0;
   border-radius: 0.5rem;
+  letter-spacing: 0.1rem;
+}
+
+.back {
+  background-color: #34b900;
+  color: rgb(255, 255, 255);
+  font-weight: 900;
 }
