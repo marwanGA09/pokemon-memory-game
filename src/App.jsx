@@ -4,6 +4,18 @@ import shuffle from '../randomize';
 
 const initialImage = [
   {
+    id: 12,
+    image:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png',
+    selected: false,
+  },
+  {
+    id: 16,
+    image:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png',
+    selected: false,
+  },
+  {
     id: 20,
     image:
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png',
@@ -43,7 +55,7 @@ const initialImage = [
 export default function App() {
   return (
     <>
-      <h2>HEllo</h2> <ScoreBoard /> <GameBoard />
+      <ScoreBoard /> <GameBoard />
     </>
   );
 }
@@ -53,6 +65,7 @@ function ScoreBoard() {
 }
 
 function GameBoard() {
+  const [highScore, setHighScore] = useState(0);
   const [srcImage, setSrcImage] = useState(initialImage);
   const [selectedImage, setSelectedImage] = useState([]);
   const [score, setScore] = useState(0);
@@ -72,11 +85,21 @@ function GameBoard() {
         // console.log(data.sprites);
         // setSrcImage(data.sprites.front_default);
         setSrcImage((s) => [
-          ...s.slice(1),
-          { id: imageAddressID.current, image: data.sprites.front_default },
+          ...s
+            .slice()
+            .sort((a, b) => {
+              return b.selected - a.selected;
+            })
+            .slice(1),
+          {
+            id: imageAddressID.current,
+            image: data.sprites.front_default,
+            selected: false,
+          },
         ]);
       }
-      if (selectedImage.length > 5) {
+      console.log(selectedImageLength);
+      if (selectedImageLength > 4) {
         fetchPoke();
         // console.log('befor', imageAddressID.current);
         imageAddressID.current += 3;
@@ -89,6 +112,7 @@ function GameBoard() {
   function handleSelectedImage(id) {
     if (!selectedImage.includes(id)) {
       setSelectedImage((s) => [...s, id]);
+
       setSrcImage((img) =>
         img.map((obj) => {
           // console.log('onj', obj.id, obj.id != id, { ...obj, selected: true });
@@ -98,6 +122,7 @@ function GameBoard() {
       setScore((score) => score + 1);
     } else {
       alert(`Game over!!! \n scored ${score}`);
+      setHighScore((previous) => (score > previous ? score : previous));
       setScore(0);
       setSrcImage(initialImage);
       setSelectedImage([]);
@@ -108,7 +133,11 @@ function GameBoard() {
     <>
       <h4>This is gameBoard</h4>
       <p>Score: {score}</p>
-      {console.log(srcImage)}
+      <p>High Score: {highScore}</p>
+      {console.log('srcImage')}
+      {/* {console.log(
+        srcImage.
+      )} */}
       {shuffle(srcImage).map((img) => (
         <ImageComponent
           key={img.id}
