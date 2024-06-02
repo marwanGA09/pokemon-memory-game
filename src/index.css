@@ -1,11 +1,17 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  font-size: 62.5%;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,7 +31,96 @@ a:hover {
 body {
   margin: 0;
   min-width: 320px;
+  width: 100vw;
   height: 100vh;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #c96262;
+  font-size: 1.6rem;
+}
+
+.app {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 140rem;
+  background-color: #535bf2;
+  margin: auto;
+  height: 100vh;
+}
+
+.main-page {
+  background-color: cadetblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.main-page .description {
+  padding: 0.3rem 35rem;
+  letter-spacing: 0.1rem;
+}
+
+.main-page .play-now {
+  font-size: 3rem;
+}
+
+.main-page div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  color: #535bf2;
+}
+
+label:hover {
+  color: #626af2;
+  text-decoration: underline;
+  text-decoration-thickness: 0.4rem;
+  position: relative;
+}
+
+label:hover::before {
+  position: absolute;
+  content: '▹';
+  left: -3rem;
+  top: -1.2rem;
+  font-size: 3rem;
+}
+
+.score-board {
+  background-color: aquamarine;
+  color: black;
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 2rem 1rem 70rem;
+}
+
+.game-boards {
+  background-color: bisque;
+  display: grid;
+  grid-template-columns: repeat(4, min-content);
+  justify-content: center;
+  gap: 3rem;
+}
+
+.game-boards img {
+  width: 20rem;
+}
+
+.footer {
+  background-color: aliceblue;
+  width: 100%;
+  align-self: flex-end;
+  text-align: center;
+}
+
+input {
+  display: none;
 }
 /*
 h1 {
