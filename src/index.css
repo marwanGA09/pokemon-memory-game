@@ -1,8 +1,8 @@
 *,
 *::after,
 *::before {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -91,13 +91,18 @@ label:hover::before {
 }
 
 .score-board {
-  background-color: aquamarine;
+  background-color: rgb(80, 187, 14);
   color: black;
   align-self: flex-start;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  padding: 1rem 2rem 1rem 70rem;
+  gap: 2rem;
+  padding: 0.5rem 2rem;
+}
+
+.score-board h3 {
+  margin-right: auto;
 }
 
 .game-boards {
@@ -116,7 +121,16 @@ label:hover::before {
   background-color: aliceblue;
   width: 100%;
   align-self: flex-end;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  padding: 0.3rem 4rem;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 input {
