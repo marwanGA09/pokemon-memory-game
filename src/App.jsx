@@ -4,52 +4,87 @@ import shuffle from '../randomize';
 
 export default function App() {
   const [gameLevel, setGameLevel] = useState(null);
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+
+  function handleHighScore() {
+    setHighScore((previous) => (score > previous ? score : previous));
+  }
   return (
-    <>
-      <ScoreBoard />{' '}
+    <div className="app">
       {gameLevel ? (
-        <GameBoard gameLevel={gameLevel} />
+        <>
+          <ScoreBoard score={score} highScore={highScore} />
+          <GameBoard
+            gameLevel={gameLevel}
+            score={score}
+            onScore={setScore}
+            onHighScore={handleHighScore}
+          />
+        </>
       ) : (
         <GameLevel onGameLevel={setGameLevel} />
-      )}
-    </>
+      )}{' '}
+      <Footer />
+    </div>
   );
 }
 
 function GameLevel({ onGameLevel }) {
   return (
-    <>
-      <label htmlFor="gameLevel">Game Level</label>
-      <label htmlFor="easy">Easy</label>
-      <input
-        type="radio"
-        value={4}
-        name="gameLevel"
-        id="easy"
-        onChange={(e) => onGameLevel(e.target.value)}
-      />
-      <label htmlFor="medium">Medium</label>
-      <input
-        type="radio"
-        value={8}
-        name="gameLevel"
-        id="medium"
-        onChange={(e) => onGameLevel(e.target.value)}
-      />
-      <label htmlFor="hard">Hard</label>
-      <input
-        type="radio"
-        value={12}
-        name="gameLevel"
-        id="hard"
-        onChange={(e) => onGameLevel(e.target.value)}
-      />
-    </>
+    <div className="main-page">
+      <div>
+        {' '}
+        <h2>Memory Game!</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe beatae
+          recusandae accusamus expedita fuga repellendus deserunt ad molestiae,
+          soluta odit dolorum commodi dignissimos nesciunt quo tempore vitae
+          ducimus, dolore corrupti.
+        </p>
+        <p>
+          <strong>Play now</strong>
+        </p>
+      </div>
+      <div>
+        <label htmlFor="gameLevel">Game Level </label>
+        <label htmlFor="easy">Easy</label>
+        <input
+          type="radio"
+          value={4}
+          name="gameLevel"
+          id="easy"
+          onChange={(e) => onGameLevel(e.target.value)}
+        />
+        <label htmlFor="medium">Medium</label>
+        <input
+          type="radio"
+          value={8}
+          name="gameLevel"
+          id="medium"
+          onChange={(e) => onGameLevel(e.target.value)}
+        />
+        <label htmlFor="hard">Hard</label>
+        <input
+          type="radio"
+          value={12}
+          name="gameLevel"
+          id="hard"
+          onChange={(e) => onGameLevel(e.target.value)}
+        />
+      </div>
+    </div>
   );
 }
 
-function ScoreBoard() {
-  return <h4>THis is ScoreBoard</h4>;
+function ScoreBoard({ score, highScore }) {
+  return (
+    <div>
+      <h5>Memory Game</h5>
+      <p>Score: {score}</p>
+      <p>High Score: {highScore}</p>
+    </div>
+  );
 }
 
 let defaultImage = [
@@ -126,7 +161,7 @@ let defaultImage = [
     selected: false,
   },
 ];
-function GameBoard({ gameLevel }) {
+function GameBoard({ gameLevel, onScore, onHighScore, score }) {
   console.log('game level', gameLevel);
   // console.log('before', initialImage);
   const initialImage =
@@ -136,10 +171,9 @@ function GameBoard({ gameLevel }) {
       ? defaultImage.slice(4)
       : defaultImage.slice();
   console.log('after', initialImage);
-  const [highScore, setHighScore] = useState(0);
+
   const [srcImage, setSrcImage] = useState(initialImage);
   const [selectedImage, setSelectedImage] = useState([]);
-  const [score, setScore] = useState(0);
 
   const imageAddressID = useRef(48);
   const selectedImageLength = selectedImage.length;
@@ -190,23 +224,18 @@ function GameBoard({ gameLevel }) {
           return obj.id != id ? obj : { ...obj, selected: true };
         })
       );
-      setScore((score) => score + 1);
+      onScore((score) => score + 1);
     } else {
       alert(`Game over!!! \n scored ${score}`);
-      setHighScore((previous) => (score > previous ? score : previous));
-      setScore(0);
+      onHighScore();
+      onScore(0);
       setSrcImage(initialImage);
       setSelectedImage([]);
     }
   }
 
   return (
-    <>
-      <h4>This is gameBoard</h4>
-      <p>Score: {score}</p>
-      <p>High Score: {highScore}</p>
-      {console.log('srcImage', srcImage)}
-
+    <div className="images">
       {shuffle(srcImage).map((img) => (
         <ImageComponent
           key={img.id}
@@ -214,7 +243,7 @@ function GameBoard({ gameLevel }) {
           onSelectImage={handleSelectedImage}
         />
       ))}
-    </>
+    </div>
   );
 }
 
@@ -222,8 +251,21 @@ function ImageComponent({ img, onSelectImage }) {
   // console.log(srcImg);
   return (
     <>
-      {img.selected ? <span> 👍 </span> : <span> 👎</span>}
+      {/* {img.selected ? <span> 👍 </span> : <span> 👎</span>} */}
       <img src={img.image} alt="" onClick={() => onSelectImage(img.id)} />
     </>
+  );
+}
+
+function Footer() {
+  return (
+    <div className="footer">
+      <p>by Adem KG</p>
+      <div className="links">
+        <a href="#">Github</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Telegram</a>
+      </div>
+    </div>
   );
 }
