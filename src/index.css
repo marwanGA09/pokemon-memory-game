@@ -21,11 +21,11 @@
 
 a {
   font-weight: 500;
-  /* color:  */
+  color: #48ff00;
   text-decoration: inherit;
 }
 a:hover {
-  /* color:  */
+  color: #43e602;
 }
 
 body {
@@ -33,7 +33,7 @@ body {
   min-width: 320px;
   width: 100vw;
   height: 100vh;
-  color: rgba(255, 255, 255, 0.87);
+  color: antiquewhite;
   /* background-color: #c96262; */
 
   background-image: url('bk3.gif'), linear-gradient(black, rgb(0, 0, 0));
@@ -42,6 +42,7 @@ body {
   /* background-position: ; */
   background-size: cover;
   font-size: 1.6rem;
+  font-weight: 700;
 }
 
 #root {
@@ -64,14 +65,22 @@ body {
   align-items: center;
   gap: 1rem;
 }
+.main-page h2 {
+  color: #48ff00;
+  font-size: 5.3rem;
+  text-decoration: underline;
+  text-decoration-color: antiquewhite;
+}
 
 .main-page .description {
   padding: 0.3rem 35rem;
   letter-spacing: 0.1rem;
+  color: antiquewhite;
 }
 
 .main-page .play-now {
   font-size: 3rem;
+  color: antiquewhite;
 }
 
 .main-page div {
@@ -89,6 +98,7 @@ label:hover {
   text-decoration: underline;
   text-decoration-thickness: 0.4rem;
   position: relative;
+  cursor: pointer;
 }
 
 label:hover::before {
@@ -101,7 +111,7 @@ label:hover::before {
 
 .score-board {
   /* background-color: rgb(80, 187, 14); */
-  color: black;
+  /* color: black; */
   align-self: flex-start;
   display: flex;
   justify-content: center;
@@ -133,7 +143,7 @@ label:hover::before {
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
-  color: black;
+  /* color: black; */
   padding: 0.3rem 4rem;
 }
 
