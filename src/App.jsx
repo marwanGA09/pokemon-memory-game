@@ -77,7 +77,7 @@ export default function App() {
             onScore={setScore}
             onGameEnd={setGameEnd}
             onHighScore={handleHighScore}
-          />
+          />{' '}
         </>
       ) : (
         <GameLevel onGameLevel={setGameLevel} />
@@ -232,6 +232,7 @@ function GameBoard({ gameLevel, score, onScore, onGameEnd, onHighScore }) {
 
   const [srcImage, setSrcImage] = useState(initialImage);
   const [selectedImage, setSelectedImage] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const imageAddressID = useRef(48);
   const selectedImageLength = selectedImage.length;
 
@@ -240,6 +241,7 @@ function GameBoard({ gameLevel, score, onScore, onGameEnd, onHighScore }) {
     function () {
       console.log('useEffected is run');
       async function fetchPoke() {
+        setIsLoading(true);
         const res = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${imageAddressID.current}/`
         );
@@ -259,6 +261,7 @@ function GameBoard({ gameLevel, score, onScore, onGameEnd, onHighScore }) {
             selected: false,
           },
         ]);
+        setIsLoading(false);
       }
       console.log(selectedImageLength);
       if (selectedImageLength > gameLevel - 1) {
@@ -303,20 +306,32 @@ function GameBoard({ gameLevel, score, onScore, onGameEnd, onHighScore }) {
           key={img.id}
           img={img}
           onSelectImage={handleSelectedImage}
+          isLoading={isLoading}
         />
       ))}
     </div>
   );
 }
 
-function ImageComponent({ img, onSelectImage }) {
+function ImageComponent({ img, onSelectImage, isLoading }) {
   // console.log(srcImg);
   return (
     <>
-      {/* {img.selected ? <span> 👍 </span> : <span> 👎</span>} */}
-      <img src={img.image} alt="" onClick={() => onSelectImage(img.id)} />
+      {isLoading ? (
+        <IsLoading />
+      ) : (
+        <img
+          src={img.image}
+          alt="pokemon card"
+          onClick={() => onSelectImage(img.id)}
+        />
+      )}
     </>
   );
+}
+
+function IsLoading() {
+  return <img src="Spinner.gif" alt="spinner gif image" />;
 }
 
 function Footer() {
