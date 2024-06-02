@@ -122,6 +122,16 @@ label:hover::before {
 
 .score-board h3 {
   margin-right: auto;
+  color: #43e602;
+}
+
+.score-board span {
+  color: #43e602;
+  font-weight: 900;
+}
+.score-board span.high-score {
+  color: #f2ff01;
+  font-weight: 900;
 }
 
 .game-boards {
