@@ -110,11 +110,12 @@ label:hover::before {
   display: grid;
   grid-template-columns: repeat(4, min-content);
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 .game-boards img {
   width: 20rem;
+  cursor: pointer;
 }
 
 .footer {
