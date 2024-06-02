@@ -2,29 +2,53 @@ import { useEffect, useRef, useState } from 'react';
 import shuffle from '../randomize';
 // MAX ID 1020
 
+function ResultDisplay({ score, onGameEnd, onHighScore, onScore }) {
+  return (
+    <div>
+      <p>Game over!!!</p> <p>scored {score}</p>
+      <button
+        onClick={() => {
+          onHighScore();
+          onScore(0);
+          onGameEnd(false);
+        }}
+      >
+        restart
+      </button>
+    </div>
+  );
+}
+
 export default function App() {
   const [gameLevel, setGameLevel] = useState(null);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-
+  const [gameEnd, setGameEnd] = useState(false);
   function handleHighScore() {
     setHighScore((previous) => (score > previous ? score : previous));
   }
   return (
     <div className="app">
-      {gameLevel ? (
+      {gameEnd ? (
+        <ResultDisplay
+          score={score}
+          onGameEnd={setGameEnd}
+          onScore={setScore}
+          onHighScore={handleHighScore}
+        />
+      ) : gameLevel ? (
         <>
           <ScoreBoard score={score} highScore={highScore} />
           <GameBoard
             gameLevel={gameLevel}
             score={score}
             onScore={setScore}
-            onHighScore={handleHighScore}
+            onGameEnd={setGameEnd}
           />
         </>
       ) : (
         <GameLevel onGameLevel={setGameLevel} />
-      )}
+      )}{' '}
       <Footer />
     </div>
   );
@@ -158,7 +182,7 @@ let defaultImage = [
     selected: false,
   },
 ];
-function GameBoard({ gameLevel, onScore, onHighScore, score }) {
+function GameBoard({ gameLevel, score, onScore, onGameEnd }) {
   console.log('game level', gameLevel);
   // console.log('before', initialImage);
   const initialImage =
@@ -171,7 +195,6 @@ function GameBoard({ gameLevel, onScore, onHighScore, score }) {
 
   const [srcImage, setSrcImage] = useState(initialImage);
   const [selectedImage, setSelectedImage] = useState([]);
-
   const imageAddressID = useRef(48);
   const selectedImageLength = selectedImage.length;
 
@@ -214,20 +237,18 @@ function GameBoard({ gameLevel, onScore, onHighScore, score }) {
   function handleSelectedImage(id) {
     if (!selectedImage.includes(id)) {
       setSelectedImage((s) => [...s, id]);
-
       setSrcImage((img) =>
         img.map((obj) => {
-          // console.log('onj', obj.id, obj.id != id, { ...obj, selected: true });
           return obj.id != id ? obj : { ...obj, selected: true };
         })
       );
       onScore((score) => score + 1);
     } else {
-      alert(`Game over!!! \n scored ${score}`);
-      onHighScore();
-      onScore(0);
+      // alert(`Game over!!! \n scored ${score}`);
+
       setSrcImage(initialImage);
       setSelectedImage([]);
+      onGameEnd(true);
     }
   }
 
@@ -248,7 +269,7 @@ function ImageComponent({ img, onSelectImage }) {
   // console.log(srcImg);
   return (
     <>
-      {/* {img.selected ? <span> 👍 </span> : <span> 👎</span>} */}
+      {img.selected ? <span> 👍 </span> : <span> 👎</span>}
       <img src={img.image} alt="" onClick={() => onSelectImage(img.id)} />
     </>
   );
@@ -257,11 +278,11 @@ function ImageComponent({ img, onSelectImage }) {
 function Footer() {
   return (
     <div className="footer">
-      <p>by Adem KG</p>
+      <p>By Adem KG</p>
       <div className="links">
-        <a href="#">Github</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Telegram</a>
+        <a href="#">G</a>
+        <a href="#">L</a>
+        <a href="#">T</a>
       </div>
     </div>
   );
