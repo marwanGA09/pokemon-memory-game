@@ -11,7 +11,7 @@
   line-height: 1.5;
   font-weight: 400;
   font-size: 62.5%;
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,11 +21,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  /* color:  */
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  /* color:  */
 }
 
 body {
@@ -34,8 +34,18 @@ body {
   width: 100vw;
   height: 100vh;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #c96262;
+  /* background-color: #c96262; */
+
+  background-image: url('bk3.gif'), linear-gradient(black, rgb(0, 0, 0));
+  background-repeat: no-repeat;
+  /* background-origin: center; */
+  /* background-position: ; */
+  background-size: cover;
   font-size: 1.6rem;
+}
+
+#root {
+  background-color: #43444ecf;
 }
 
 .app {
@@ -43,13 +53,12 @@ body {
   justify-content: center;
   align-items: center;
   width: 140rem;
-  background-color: #535bf2;
   margin: auto;
   height: 100vh;
 }
 
 .main-page {
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,11 +81,11 @@ body {
 }
 
 label {
-  color: #535bf2;
+  color: #48ff00;
 }
 
 label:hover {
-  color: #626af2;
+  color: #43e602;
   text-decoration: underline;
   text-decoration-thickness: 0.4rem;
   position: relative;
@@ -91,7 +100,7 @@ label:hover::before {
 }
 
 .score-board {
-  background-color: rgb(80, 187, 14);
+  /* background-color: rgb(80, 187, 14); */
   color: black;
   align-self: flex-start;
   display: flex;
@@ -106,7 +115,7 @@ label:hover::before {
 }
 
 .game-boards {
-  background-color: bisque;
+  /* background-color: bisque; */
   display: grid;
   grid-template-columns: repeat(4, min-content);
   justify-content: center;
@@ -119,8 +128,8 @@ label:hover::before {
 }
 
 .footer {
-  background-color: aliceblue;
-  width: 100%;
+  /* background-color: aliceblue; */
+  min-width: 88rem;
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
@@ -137,46 +146,30 @@ label:hover::before {
 input {
   display: none;
 }
-/*
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+
+.result-display {
+  padding-top: 10rem;
+  /* background-color: #626af2; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.result-display p {
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.result-display div {
+  padding-top: 4rem;
+  display: flex;
+  gap: 3rem;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  width: 7rem;
+  padding: 0.3rem 0.6rem;
+  border: 0;
+  border-radius: 0.5rem;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
-/* .app {
-  margin: 0;
-  height: 100vh;
-  background-color: aqua;
-} */

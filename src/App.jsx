@@ -2,36 +2,29 @@ import { useEffect, useRef, useState } from 'react';
 import shuffle from '../randomize';
 // MAX ID 1020
 
-function ResultDisplay({
-  score,
-  highScore,
-  onGameEnd,
-  onHighScore,
-  onScore,
-  onGameLevel,
-}) {
+function ResultDisplay({ score, highScore, onGameEnd, onScore, onGameLevel }) {
   return (
-    <div>
-      <p>Game over!!!</p> <p>scored {score}</p> <p>High score {highScore}</p>
-      <button
-        onClick={() => {
-          onScore(0);
-          // onHighScore();
-          onGameEnd(false);
-        }}
-      >
-        restart
-      </button>
-      <button
-        onClick={() => {
-          onScore(0);
-          // onHighScore();
-          onGameEnd(false);
-          onGameLevel(null);
-        }}
-      >
-        Back
-      </button>
+    <div className="result-display">
+      <p>Game over!!!</p> <p>scored {score}</p> <p>High score {highScore}</p>{' '}
+      <div>
+        <button
+          onClick={() => {
+            onScore(0);
+            onGameEnd(false);
+          }}
+        >
+          restart
+        </button>
+        <button
+          onClick={() => {
+            onScore(0);
+            onGameEnd(false);
+            onGameLevel(null);
+          }}
+        >
+          Back
+        </button>{' '}
+      </div>
     </div>
   );
 }
@@ -77,7 +70,7 @@ export default function App() {
 function GameLevel({ onGameLevel }) {
   return (
     <div className="main-page">
-      <h2>Memory Game!</h2>
+      <h2>Pokemon Memory Game!</h2>
       <p className="description">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe beatae
         recusandae accusamus expedita fuga repellendus deserunt ad molestiae,
