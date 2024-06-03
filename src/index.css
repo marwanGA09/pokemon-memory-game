@@ -111,14 +111,14 @@ label:hover::before {
 }
 
 .score-board {
-  /* background-color: rgb(80, 187, 14); */
+  background-color: rgba(213, 220, 227, 0.184);
   /* color: black; */
   align-self: flex-start;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 0.5rem 2rem;
+  padding: 1.2rem 4rem;
 }
 
 .score-board h3 {
@@ -144,20 +144,20 @@ label:hover::before {
 }
 
 .game-boards img {
-  width: 20rem;
+  width: min(25vw, 15rem);
   cursor: pointer;
   background-color: rgba(213, 220, 227, 0.184);
   border-radius: 4rem;
 }
 
 .footer {
-  /* background-color: aliceblue; */
+  background-color: rgba(213, 220, 227, 0.184);
   /* min-width: 88rem; */
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
-  /* color: black; */
-  padding: 0.3rem 4rem;
+  color: rgba(22, 22, 22, 0.878);
+  padding: 1.2rem 4rem;
 }
 
 .links {
@@ -229,5 +229,18 @@ button {
 
   .main-page h2 {
     font-size: 3.3rem;
+  }
+
+  .score-board,
+  .footer {
+    width: 100vw;
+  }
+
+  .result-display p {
+    font-size: 3rem;
+  }
+
+  .result-display p:first-child {
+    font-size: 5rem;
   }
 }
