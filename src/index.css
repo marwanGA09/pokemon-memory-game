@@ -36,7 +36,7 @@ body {
   color: antiquewhite;
   /* background-color: #c96262; */
 
-  background-image: url('bk3.gif'), linear-gradient(black, rgb(0, 0, 0));
+  background-image: url('bk3.gif');
   background-repeat: no-repeat;
   /* background-origin: center; */
   /* background-position: ; */
