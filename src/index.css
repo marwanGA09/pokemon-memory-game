@@ -30,8 +30,8 @@ a:hover {
 
 body {
   margin: 0;
-  min-width: 320px;
-  width: 100vw;
+  /* min-width: 320px; */
+  /* width: 100vw; */
   height: 100vh;
   color: antiquewhite;
   /* background-color: #c96262; */
@@ -53,7 +53,7 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
-  width: 140rem;
+  /* width: 140rem; */
   margin: auto;
   height: 100vh;
 }
@@ -73,7 +73,8 @@ body {
 }
 
 .main-page .description {
-  padding: 0.3rem 35rem;
+  padding: 0.3rem;
+  max-width: 80ch;
   letter-spacing: 0.1rem;
   color: antiquewhite;
 }
@@ -137,7 +138,7 @@ label:hover::before {
 .game-boards {
   /* background-color: bisque; */
   display: grid;
-  grid-template-columns: repeat(4, min-content);
+  /* grid-template-rows: repeat(4, min-content); */
   justify-content: center;
   gap: 1rem;
 }
@@ -151,7 +152,7 @@ label:hover::before {
 
 .footer {
   /* background-color: aliceblue; */
-  min-width: 88rem;
+  /* min-width: 88rem; */
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
@@ -209,4 +210,24 @@ button {
   background-color: #34b900;
   color: rgb(255, 255, 255);
   font-weight: 900;
+}
+
+@media (min-width: 60rem) {
+  .game-boards {
+    grid-template-columns: repeat(4, min-content) !important;
+  }
+
+  .game-boards img {
+    width: 20rem !important;
+  }
+}
+
+@media (max-width: 60rem) {
+  .main-page {
+    padding: 1rem;
+  }
+
+  .main-page h2 {
+    font-size: 3.3rem;
+  }
 }

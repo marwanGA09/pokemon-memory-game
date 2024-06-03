@@ -295,11 +295,11 @@ function GameBoard({ gameLevel, score, onScore, onGameEnd, onHighScore }) {
   return (
     <div
       className="game-boards"
-      // style={{
-      //   gridTemplateColumns: `repeat(${
-      //     gameLevel == 4 ? 1 : gameLevel == 8 ? 2 : 3
-      //   }, min-content)`,
-      // }}
+      style={{
+        gridTemplateColumns: `repeat(${
+          gameLevel == 4 ? 1 : gameLevel == 8 ? 2 : 3
+        }, min-content)`,
+      }}
     >
       {shuffle(srcImage).map((img) => (
         <ImageComponent
