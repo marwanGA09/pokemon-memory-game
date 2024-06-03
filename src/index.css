@@ -152,7 +152,7 @@ label:hover::before {
 
 .footer {
   background-color: rgba(213, 220, 227, 0.184);
-  /* min-width: 88rem; */
+  min-width: 70rem;
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
