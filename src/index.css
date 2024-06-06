@@ -30,36 +30,28 @@ a:hover {
 
 body {
   margin: 0;
-  /* min-width: 320px; */
-  /* width: 100vw; */
   height: 100vh;
   color: antiquewhite;
-  /* background-color: #c96262; */
-
-  background-image: url('background.webp');
+  background-image: linear-gradient(
+      rgba(36, 32, 32, 0.284),
+      rgba(230, 15, 15, 0.374)
+    ),
+    url('background.webp');
   background-repeat: no-repeat;
-  /* background-origin: center; */
-  /* background-position: ; */
   background-size: cover;
   font-size: 1.6rem;
   font-weight: 700;
-}
-
-#root {
-  /* background-color: #43444e38; */
 }
 
 .app {
   display: grid;
   justify-content: center;
   align-items: center;
-  /* width: 140rem; */
   margin: auto;
   height: 100vh;
 }
 
 .main-page {
-  /* background-color: cadetblue; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -111,8 +103,7 @@ label:hover::before {
 }
 
 .score-board {
-  background-color: rgba(213, 220, 227, 0.184);
-  /* color: black; */
+  background-color: rgba(213, 220, 227, 0.34);
   align-self: flex-start;
   display: flex;
   justify-content: center;
@@ -136,9 +127,7 @@ label:hover::before {
 }
 
 .game-boards {
-  /* background-color: bisque; */
   display: grid;
-  /* grid-template-rows: repeat(4, min-content); */
   justify-content: center;
   gap: 1rem;
 }
@@ -146,12 +135,12 @@ label:hover::before {
 .game-boards img {
   width: min(25vw, 15rem);
   cursor: pointer;
-  background-color: rgba(213, 220, 227, 0.184);
+  background-color: rgba(213, 220, 227, 0.34);
   border-radius: 4rem;
 }
 
 .footer {
-  background-color: rgba(213, 220, 227, 0.184);
+  background-color: rgba(213, 220, 227, 0.34);
   min-width: 70rem;
   align-self: flex-end;
   display: flex;
@@ -172,7 +161,6 @@ input {
 
 .result-display {
   padding-top: 10rem;
-  /* background-color: #626af2; */
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -198,7 +186,6 @@ input {
 }
 
 button {
-  /* width: 7rem; */
   padding: 0.8rem 4rem;
   font-size: 2rem;
   border: 0;
