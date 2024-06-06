@@ -36,9 +36,10 @@ body {
       rgba(36, 32, 32, 0.284),
       rgba(230, 15, 15, 0.374)
     ),
-    url('background.webp');
+    url('./../background.webp');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   font-size: 1.6rem;
   font-weight: 700;
 }
