@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Footer } from './Footer';
-import { GameBoard } from './GameBoard';
-import { ScoreBoard } from './ScoreBoard';
-import { GameLevel } from './GameLevel';
-import { ResultDisplay } from './ResultDisplay';
+import { Footer } from './Component/Footer';
+import { GameBoard } from './Component/GameBoard';
+import { ScoreBoard } from './Component/ScoreBoard';
+import { GameLevel } from './Component/GameLevel';
+import { ResultDisplay } from './Component/ResultDisplay';
 export default function App() {
   const [gameLevel, setGameLevel] = useState(null);
   const [score, setScore] = useState(0);

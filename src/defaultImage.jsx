@@ -1,4 +1,4 @@
-export let defaultImage = [
+export const defaultImage = [
   {
     id: 1,
     image:
