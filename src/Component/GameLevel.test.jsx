@@ -20,7 +20,14 @@ describe('GameLevel test', () => {
   test('have three level of game', () => {
     render(<GameLevel onGameLevelMock={onGameLevelMock} />);
     const gameLevelInput = screen.getAllByRole('radio');
-    screen.debug(gameLevelInput);
     expect(gameLevelInput.length).toBe(3);
+  });
+
+  test('game Level has their own correct value', () => {
+    render(<GameLevel onGameLevelMock={onGameLevelMock} />);
+    const gameLevelInput = screen.getAllByRole('radio');
+    expect(+gameLevelInput[0].value).toBe(4);
+    expect(+gameLevelInput[1].value).toBe(8);
+    expect(+gameLevelInput[2].value).toBe(12);
   });
 });
