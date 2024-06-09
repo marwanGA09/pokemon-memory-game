@@ -10,7 +10,7 @@ export function GameBoard({
   onGameEnd,
   onHighScore,
 }) {
-  console.log('game level', gameLevel);
+  // console.log('game level', gameLevel);
   // console.log('before', initialImage);
   const initialImage =
     gameLevel == 4
@@ -18,7 +18,7 @@ export function GameBoard({
       : gameLevel == 8
       ? defaultImage.slice(4)
       : defaultImage.slice();
-  console.log('after', initialImage);
+  // console.log('after', initialImage);
 
   const [srcImage, setSrcImage] = useState(initialImage);
   const [selectedImage, setSelectedImage] = useState([]);

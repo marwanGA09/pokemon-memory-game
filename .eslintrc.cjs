@@ -17,16 +17,25 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'error',
     'react/prop-types': 'warn',
-    'padding-line-between-statements': [
-      'warn',
-      {
-        blankLine: 'always',
-        prev: '*',
-        next: '*',
-        allowSingleLine: true, // Allow single-line statements within blocks (e.g., if statements)
-      },
-    ],
   },
+  'padding-line-between-statements': [
+    'error',
+    {
+      blankLine: 'always',
+      prev: ['const', 'let', 'var'], // Always one line break after variable declarations
+      next: '*', // One line break after any statement
+    },
+  ],
 };
+
+// 'padding-line-between-statements': [
+//   'warn',
+//   {
+//     blankLine: 'always',
+//     prev: '*',
+//     next: '*',
+//     allowSingleLine: true, // Allow single-line statements within blocks (e.g., if statements)
+//   },
+// ],

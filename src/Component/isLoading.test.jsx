@@ -6,7 +6,7 @@ describe('isLoading test', () => {
   test('found in the document', () => {
     render(<IsLoading />);
     const imageComponent = screen.getByRole('img');
-    screen.debug(imageComponent);
+    // screen.debug(imageComponent);
     expect(imageComponent).toBeInTheDocument();
   });
 
