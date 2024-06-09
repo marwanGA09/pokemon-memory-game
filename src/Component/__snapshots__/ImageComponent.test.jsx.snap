@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Image component > Presence of IsLoading component in the document if isLoading is true 1`] = `
+<img
+  alt="spinner gif image"
+  src="Spinner.gif"
+/>
+`;
+
+exports[`Image component > Presence of Pokemon image component in the document if isLoading is false 1`] = `
+<img
+  alt="pokemon card"
+  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+/>
+`;
+
+exports[`Image component > Presence of Pokemon image component in the document if isLoading is false 2`] = `
+<img
+  alt="pokemon card"
+  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+/>
+`;

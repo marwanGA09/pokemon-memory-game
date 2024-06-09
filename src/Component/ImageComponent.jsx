@@ -1,7 +1,6 @@
 import { IsLoading } from './IsLoading';
 
-export function ImageComponent({ img, onSelectImage, isLoading }) {
-  // console.log(srcImg);
+export function ImageComponent({ img, isLoading, onSelectImage }) {
   return (
     <>
       {isLoading ? (
