@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, test, vitest } from 'vitest';
 import { GameLevel } from './GameLevel';
-
-const onGameLevelMock = vitest.fn();
+import userEvent from '@testing-library/user-event';
 
 describe('GameLevel test', () => {
+  const onGameLevelMock = vitest.fn();
   test('presence of game level', () => {
     render(<GameLevel onGameLevelMock={onGameLevelMock} />);
     const gameLevelHtml = screen.getByTestId('game-level');
@@ -29,5 +29,27 @@ describe('GameLevel test', () => {
     expect(+gameLevelInput[0].value).toBe(4);
     expect(+gameLevelInput[1].value).toBe(8);
     expect(+gameLevelInput[2].value).toBe(12);
+  });
+
+  test('onGameLevel prop called', async () => {
+    const userInteraction = userEvent.setup();
+    const onGameLevel = vitest.fn();
+    render(<GameLevel onGameLevel={onGameLevel} />);
+    const gameLevelInput = screen.getAllByRole('radio');
+    gameLevelInput.forEach(async (inp) => {
+      await userInteraction.click(inp);
+      expect(onGameLevel).toBeCalled();
+    });
+  });
+
+  test('onGameLevel prop called with correct argument', async () => {
+    const userInteraction = userEvent.setup();
+    const onGameLevel = vitest.fn();
+    render(<GameLevel onGameLevel={onGameLevel} />);
+    const gameLevelInput = screen.getAllByRole('radio');
+    gameLevelInput.forEach(async (inp) => {
+      await userInteraction.click(inp);
+      expect(onGameLevel).toBeCalledWith(inp.value);
+    });
   });
 });
