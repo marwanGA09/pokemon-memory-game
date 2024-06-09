@@ -1,24 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import shuffle from '../../randomize';
 import { ImageComponent } from './ImageComponent';
 import { defaultImage } from '../defaultImage';
 
-export function GameBoard({
-  gameLevel,
-  score,
-  onScore,
-  onGameEnd,
-  onHighScore,
-}) {
-  // console.log('game level', gameLevel);
-  // console.log('before', initialImage);
+function GameBoard({ gameLevel, onScore, onGameEnd, onHighScore }) {
   const initialImage =
     gameLevel == 4
       ? defaultImage.slice(8)
       : gameLevel == 8
       ? defaultImage.slice(4)
       : defaultImage.slice();
-  // console.log('after', initialImage);
 
   const [srcImage, setSrcImage] = useState(initialImage);
   const [selectedImage, setSelectedImage] = useState([]);
@@ -102,3 +94,11 @@ export function GameBoard({
     </div>
   );
 }
+GameBoard.propTypes = {
+  gameLevel: PropTypes.number,
+  onScore: PropTypes.func,
+  onGameEnd: PropTypes.func,
+  onHighScore: PropTypes.func,
+};
+
+export { GameBoard };

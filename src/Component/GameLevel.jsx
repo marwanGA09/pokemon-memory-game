@@ -1,4 +1,6 @@
-export function GameLevel({ onGameLevel }) {
+import PropTypes from 'prop-types';
+
+function GameLevel({ onGameLevel }) {
   return (
     <div data-testid="game-level" className="main-page">
       <h2>Pokemon Memory Game</h2>
@@ -41,3 +43,7 @@ export function GameLevel({ onGameLevel }) {
     </div>
   );
 }
+
+GameLevel.propTypes = { onGameLevel: PropTypes.func };
+
+export { GameLevel };

@@ -1,4 +1,6 @@
-export function ScoreBoard({ score, highScore }) {
+import PropTypes from 'prop-types';
+
+function ScoreBoard({ score, highScore }) {
   return (
     <div className="score-board">
       <h3>Memory Game</h3>
@@ -11,3 +13,10 @@ export function ScoreBoard({ score, highScore }) {
     </div>
   );
 }
+
+ScoreBoard.propTypes = {
+  score: PropTypes.number,
+  highScore: PropTypes.number,
+};
+
+export { ScoreBoard };

@@ -1,6 +1,7 @@
 import { IsLoading } from './IsLoading';
+import PropTypes from 'prop-types';
 
-export function ImageComponent({ img, isLoading, onSelectImage }) {
+function ImageComponent({ img, isLoading, onSelectImage }) {
   return (
     <>
       {isLoading ? (
@@ -15,3 +16,11 @@ export function ImageComponent({ img, isLoading, onSelectImage }) {
     </>
   );
 }
+
+ImageComponent.propTypes = {
+  img: PropTypes.object,
+  isLoading: PropTypes.bool,
+  onSelectImage: PropTypes.func,
+};
+
+export { ImageComponent };

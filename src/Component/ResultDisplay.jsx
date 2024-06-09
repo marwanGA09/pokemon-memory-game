@@ -1,4 +1,6 @@
-export function ResultDisplay({
+import PropTypes from 'prop-types';
+
+function ResultDisplay({
   score,
   highScore,
   onGameEnd,
@@ -39,3 +41,14 @@ export function ResultDisplay({
     </div>
   );
 }
+
+ResultDisplay.propTypes = {
+  score: PropTypes.number,
+  highScore: PropTypes.number,
+  onGameEnd: PropTypes.func,
+  onScore: PropTypes.func,
+  onGameLevel: PropTypes.func,
+  highScoreFlag: PropTypes.bool,
+};
+
+export { ResultDisplay };
