@@ -4,7 +4,7 @@ import { faMailBulk } from '@fortawesome/free-solid-svg-icons';
 
 export function Footer() {
   return (
-    <div className="footer">
+    <div data-testid="footer" className="footer">
       <p>By Adem KG</p>
       <div className="links">
         <a href="mailto:ademkedir724@gmail.com">
