@@ -6,10 +6,6 @@ export function ResultDisplay({
   onGameLevel,
   highScoreFlag,
 }) {
-  // check whether eslint is working
-  function add() {}
-  function adb() {}
-  const c = 4;
   return (
     <div className="result-display">
       <p>Game over 😢</p> <p> Scored {score} 👏 </p>
@@ -19,7 +15,7 @@ export function ResultDisplay({
         </p>
       ) : (
         <p> High score {highScore}</p>
-      )}{' '}
+      )}
       <div>
         <button
           onClick={() => {
@@ -38,7 +34,7 @@ export function ResultDisplay({
           }}
         >
           Back
-        </button>{' '}
+        </button>
       </div>
     </div>
   );
