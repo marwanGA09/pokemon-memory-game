@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`isLoading test > Take snap shot 1`] = `
+<img
+  alt="spinner gif image"
+  src="Spinner.gif"
+/>
+`;
