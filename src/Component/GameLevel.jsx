@@ -1,6 +1,6 @@
 export function GameLevel({ onGameLevel }) {
   return (
-    <div className="main-page">
+    <div data-testid="game-level" className="main-page">
       <h2>Pokemon Memory Game</h2>
       <p className="description">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe beatae

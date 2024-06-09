@@ -1,0 +1,119 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GameLevel test > Take snapShot of game level 1`] = `
+<div
+  class="main-page"
+  data-testid="game-level"
+>
+  <h2>
+    Pokemon Memory Game
+  </h2>
+  <p
+    class="description"
+  >
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe beatae recusandae accusamus expedita fuga repellendus deserunt ad molestiae, soluta odit dolorum commodi dignissimos nesciunt quo tempore vitae ducimus, dolore corrupti.
+  </p>
+  <p>
+     
+    <strong
+      class="play-now"
+    >
+      Play Now 
+    </strong>
+  </p>
+  <div>
+    <label
+      for="easy"
+    >
+      Easy
+    </label>
+    <input
+      id="easy"
+      name="gameLevel"
+      type="radio"
+      value="4"
+    />
+    <label
+      for="medium"
+    >
+      Medium
+    </label>
+    <input
+      id="medium"
+      name="gameLevel"
+      type="radio"
+      value="8"
+    />
+    <label
+      for="hard"
+    >
+      Hard
+    </label>
+    <input
+      id="hard"
+      name="gameLevel"
+      type="radio"
+      value="12"
+    />
+  </div>
+</div>
+`;
+
+exports[`GameLevel test > have three level of game 1`] = `
+<div
+  class="main-page"
+  data-testid="game-level"
+>
+  <h2>
+    Pokemon Memory Game
+  </h2>
+  <p
+    class="description"
+  >
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe beatae recusandae accusamus expedita fuga repellendus deserunt ad molestiae, soluta odit dolorum commodi dignissimos nesciunt quo tempore vitae ducimus, dolore corrupti.
+  </p>
+  <p>
+     
+    <strong
+      class="play-now"
+    >
+      Play Now 
+    </strong>
+  </p>
+  <div>
+    <label
+      for="easy"
+    >
+      Easy
+    </label>
+    <input
+      id="easy"
+      name="gameLevel"
+      type="radio"
+      value="4"
+    />
+    <label
+      for="medium"
+    >
+      Medium
+    </label>
+    <input
+      id="medium"
+      name="gameLevel"
+      type="radio"
+      value="8"
+    />
+    <label
+      for="hard"
+    >
+      Hard
+    </label>
+    <input
+      id="hard"
+      name="gameLevel"
+      type="radio"
+      value="12"
+    />
+  </div>
+</div>
+`;
