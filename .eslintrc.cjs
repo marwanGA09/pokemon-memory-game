@@ -19,5 +19,14 @@ module.exports = {
     ],
     'no-unused-vars': 'warn',
     'react/prop-types': 'warn',
+    'padding-line-between-statements': [
+      'warn',
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: '*',
+        allowSingleLine: true, // Allow single-line statements within blocks (e.g., if statements)
+      },
+    ],
   },
 };
