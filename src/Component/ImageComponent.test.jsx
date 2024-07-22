@@ -14,7 +14,7 @@ describe('Image component', () => {
   test('Presence of Pokemon image component in the document if isLoading is false', () => {
     render(<ImageComponent img={imageObject} isLoading={false} />);
     const imageElem = screen.getByAltText(/pokemon/i);
-    console.log(imageElem.src);
+    // console.log(imageElem.src);
     expect(imageElem).toMatchSnapshot();
     expect(imageElem.src).toBe(imageObject.image);
   });

@@ -21,7 +21,7 @@ function GameBoard({ gameLevel, onScore, onGameEnd, onHighScore }) {
   // let needFetch
   useEffect(
     function () {
-      console.log('useEffected is run');
+      // console.log('useEffected is run');
       async function fetchPoke() {
         setIsLoading(true);
         const res = await fetch(
@@ -45,7 +45,7 @@ function GameBoard({ gameLevel, onScore, onGameEnd, onHighScore }) {
         ]);
         setIsLoading(false);
       }
-      console.log(selectedImageLength);
+      // console.log(selectedImageLength);
       if (selectedImageLength > gameLevel - 1) {
         fetchPoke();
         // console.log('befor', imageAddressID.current);
