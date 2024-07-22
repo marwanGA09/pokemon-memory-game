@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Footer } from './Component/Footer';
 import { GameBoard } from './Component/GameBoard';
 import { ScoreBoard } from './Component/ScoreBoard';
@@ -19,6 +19,8 @@ export default function App() {
     });
   }
 
+  const handleSetGameLevel = useCallback(setGameLevel, []);
+
   return (
     <div className="app">
       {gameEnd ? (
@@ -35,7 +37,7 @@ export default function App() {
         <>
           <ScoreBoard score={score} highScore={highScore} />
           <GameBoard
-            gameLevel={gameLevel}
+            gameLevel={Number(gameLevel)}
             score={score}
             onScore={setScore}
             onGameEnd={setGameEnd}
